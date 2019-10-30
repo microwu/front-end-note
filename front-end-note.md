@@ -13,21 +13,87 @@
 通过选择器获取一组元素（querySelectorAll）
 
 # HTTP Code
-200：请求被正常处理 <br>
-204：请求被受理但没有资源可以返回 <br>
-206：客户端只是请求资源的一部分，服务器只对请求的部分资源执行GET方法，相应报文中通过Content-Range指定范围的资源。 <br>
-301：永久性重定向 <br>
-302：临时重定向 <br>
-303：与302状态码有相似功能，只是它希望客户端在请求一个URI的时候，能通过GET方法重定向到另一个URI上 <br>
-304：发送附带条件的请求时，条件不满足时返回，与重定向无关 <br>
-307：临时重定向，与302类似，只是强制要求使用POST方法 <br>
-400：请求报文语法有误，服务器无法识别 <br>
-401：请求需要认证 <br>
-403：请求的对应资源禁止被访问 <br>
-404：服务器无法找到对应资源 <br>
-500：服务器内部错误 <br>
-502：服务器挂了<br>
-503：服务器正忙
+100 &emsp; Continue &emsp; 继续。客户端应继续其请求
+
+101 &emsp; Switching Protocols &emsp; 切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议
+
+200 &emsp; OK &emsp; 请求成功。一般用于GET与POST请求
+
+201 &emsp; Created &emsp; 已创建。成功请求并创建了新的资源
+
+202 &emsp; Accepted &emsp; 已接受。已经接受请求，但未处理完成
+
+203 &emsp; Non-Authoritative Information &emsp; 非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本
+
+204 &emsp; No Content &emsp; 无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档
+
+205 &emsp; Reset Content &emsp; 重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域
+
+206 &emsp; Partial Content &emsp; 部分内容。服务器成功处理了部分GET请求
+
+300 &emsp; Multiple Choices &emsp; 多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择
+
+301 &emsp; Moved Permanently &emsp; 永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替
+
+302 &emsp; Found &emsp; 临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI
+
+303 &emsp; See Other &emsp; 查看其它地址。与301类似。使用GET和POST请求查看
+
+304 &emsp; Not Modified &emsp; 未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源
+
+305 &emsp; Use Proxy &emsp; 使用代理。所请求的资源必须通过代理访问
+
+306 &emsp; Unused &emsp; 已经被废弃的HTTP状态码
+
+307 &emsp; Temporary Redirect &emsp; 临时重定向。与302类似。使用GET请求重定向
+
+400 &emsp; Bad Request &emsp; 客户端请求的语法错误，服务器无法理解
+
+401 &emsp; Unauthorized &emsp; 请求要求用户的身份认证
+
+402 &emsp; Payment Required &emsp; 保留，将来使用
+
+403 &emsp; Forbidden &emsp; 服务器理解请求客户端的请求，但是拒绝执行此请求
+
+404 &emsp; Not Found &emsp; 服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置"您所请求的资源无法找到"的个性页面
+
+405 &emsp; Method Not Allowed &emsp; 客户端请求中的方法被禁止
+
+406 &emsp; Not Acceptable &emsp; 服务器无法根据客户端请求的内容特性完成请求
+
+407 &emsp; Proxy Authentication Required &emsp; 请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权
+
+408 &emsp; Request Time-out &emsp; 服务器等待客户端发送的请求时间过长，超时
+
+409 &emsp; Conflict &emsp; 服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突
+
+410 &emsp; Gone &emsp; 客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置
+
+411 &emsp; Length Required &emsp; 服务器无法处理客户端发送的不带Content-Length的请求信息
+
+412 &emsp; Precondition Failed &emsp; 客户端请求信息的先决条件错误
+
+413 &emsp; Request Entity Too Large    由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息
+
+414 &emsp; Request-URI Too Large &emsp; 请求的URI过长（URI通常为网址），服务器无法处理
+
+415 &emsp; Unsupported Media Type &emsp; 服务器无法处理请求附带的媒体格式
+
+416 &emsp; Requested range not satisfiable &emsp; 客户端请求的范围无效
+
+417 &emsp; Expectation Failed &emsp; 服务器无法满足Expect的请求头信息
+
+500 &emsp; Internal Server Error &emsp; 服务器内部错误，无法完成请求
+
+501 &emsp; Not Implemented &emsp; 服务器不支持请求的功能，无法完成请求
+
+502 &emsp; Bad Gateway &emsp; 作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应
+
+503 &emsp; Service Unavailable &emsp;由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中
+
+504 &emsp; Gateway Time-out &emsp; 充当网关或代理的服务器，未及时从远端服务器获取请求
+
+505 &emsp; HTTP Version not supported &emsp; 服务器不支持请求的HTTP协议的版本，无法完成处理
 
 # Http缓存头
 *Expires* ：它通常的使用格式是 Expires:Fri ,24 Dec 2027 04:24:07 GMT，后面跟的是日期和时间，超过这个时间后，缓存的内容将失效 
@@ -211,3 +277,35 @@ div > h3#title.title{color: red;}..... 1(div)+1(h3)+100(#title)+10(.title)=112
 [lang=”en”] h3.title{color: green;}... 10([lang='en'])+1(h3)+10(.title)=21
 [lang=”en”] #title{color: gray;}...... 10([lang=”en”])+100(#title)=110
 ```
+
+# let关键字
+let可以让变量具有ES6中的**块级作用域**的属性
+```js
+{ 
+    var x = 2; 
+}
+// 这里可以使用 x 变量
+
+{ 
+    let x = 2;
+}
+// 这里不能使用 x 变量
+```
+# HTTP方法
+GET<br>
+POST<br>
+HEAD<br>
+OPTIONS<br>
+PUT<br>
+DELETE<br>
+TRACE<br>
+CONNECT<br>
+
+# \<link>和@import
+链接方式（下面用 link 代替）和导入方式（下面用 **@import** 代替）都是引入外部的 CSS 文件的方式，下面我们来比较这两种方式，并且说明为什么不推荐使用 **@import**。
+
+link 属于 HTML，通过 **\<link>** 标签中的 href 属性来引入外部文件，而 **@import** 属于 CSS，所以导入语句应写在 CSS 中，要注意的是导入语句应写在样式表的开头，否则无法正确导入外部文件；
+
+**@import** 是 CSS2.1 才出现的概念，所以如果浏览器版本较低，无法正确导入外部样式文件；
+
+当 HTML 文件被加载时，link 引用的文件会同时被加载，而 **@import** 引用的文件则会等页面全部下载完毕再被加载；

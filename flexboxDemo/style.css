@@ -1,0 +1,24 @@
+#flexbox {
+  height: 500px;
+  width: 500px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  /* cross axis */
+  align-items: center;
+  /* main axis */
+  justify-content: center;
+}
+
+#flexbox div{
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  margin: 5px;
+}
+
+#flexbox div:nth-child(2){
+  background-color: blanchedalmond;
+  /* align-self: flex-start; */
+  order: -1;
+}
