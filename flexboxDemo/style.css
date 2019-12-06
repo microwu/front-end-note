@@ -1,24 +1,28 @@
 #flexbox {
   height: 500px;
-  width: 500px;
+  width: 650px;
+  padding: 10px;
   background-color: black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  /* flex-direction: column; */
   /* cross axis */
-  align-items: center;
+  /*align-items: flex-start;*/
+  /*flex-wrap: wrap;*/
+  justify-content: space-between;
   /* main axis */
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 #flexbox div{
   height: 50px;
-  width: 50px;
+  width: 200px;
   background-color: #fff;
-  margin: 5px;
+  /* margin: 5px; */
 }
 
 #flexbox div:nth-child(2){
-  background-color: blanchedalmond;
+  /* background-color: blanchedalmond; */
   /* align-self: flex-start; */
-  order: -1;
+  /* order: -1; */
 }
